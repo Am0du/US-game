@@ -41,11 +41,7 @@ while game_on:
             messagebox.showerror('ERROR', 'Already listed')
 
     elif answer_state == 'Exit':
-        states_not_listed = []
-        for state in state_list:
-            if state not in guess:
-                states_not_listed.append(state)
-
+        states_not_listed = [state for state in state_list if state not in guess]
         states_not_listed = pandas.DataFrame(states_not_listed)
         states_not_listed.to_csv('states_not_listed.csv')
         break
